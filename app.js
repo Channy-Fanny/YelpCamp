@@ -18,9 +18,7 @@ var commentRoutes 	 = require("./routes/comments"),
 	campgroundRoutes = require("./routes/campgrounds"),
 	indexRoutes		 = require("./routes/index");
 
-// mongoose.connect("mongodb://localhost:27017/yelp_camp", { useNewUrlParser: true });
-
-mongoose.connect("mongodb+srv://"+process.env.mongoUser+":"+process.env.mongoPassword+"@cluster0-9ndde.mongodb.net/test?retryWrites=true&w=majority", {
+mongoose.connect(process.env.databaseURL, {
 	useNewUrlParser: true,
 	useCreateIndex: true
 }).then(() => {
