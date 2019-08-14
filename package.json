@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	"start": "node app.js"
+    "start": "node app.js"
   },
   "author": "Ken Adams",
   "license": "ISC",
@@ -15,6 +15,7 @@
     "dotenv": "^8.0.0",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
+    "express-sanitizer": "^1.0.5",
     "express-session": "^1.16.2",
     "method-override": "^3.0.0",
     "moment": "^2.24.0",

@@ -30,7 +30,7 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
 	var name = req.body.name;
 	var price = req.body.price;
 	var image = req.body.image;
-	var desc = req.body.description;
+	var desc = req.sanitize(req.body.description);
 	var author = {
 		id: req.user._id,
 		username: req.user.username
@@ -89,6 +89,7 @@ router.put("/:id", middleware.checkCampgroundOwnership, (req, res) => {
 		req.body.campground.lat = data[0].latitude;
 		req.body.campground.lng = data[0].longitude;
 		req.body.campground.location = data[0].formattedAddress;
+		req.body.campground.description = req.sanitize(req.body.campground.description);
 		Campground.findByIdAndUpdate(req.params.id, req.body.campground, (err, updatedCampground) => {
 			if(err){
 				res.redirect("/campgrounds");
