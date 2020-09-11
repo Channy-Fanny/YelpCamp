@@ -10,12 +10,12 @@
 	</div>
 </header>
 
-<div class="row text-center" style="display:flex; flex-wrap: wrap;">
+<div class="row text-center camp-deck">
 	<% campgrounds.forEach((campground) =>{ %>
-		<div class="col-md-3 col-sm-6">
-			<div class="card h-100" style="max-height: 20rem;">
-				<img src="<%= campground.image %>" style="max-height: 10rem;">
-				<div class="card-body p-2" style="display: flex; justify-content: center; align-items: center;">
+		<div class="col-md-3 col-sm-6 mb-3">
+			<div class="card h-100 camp-card-small">
+				<img class="camp-photo-small" src="<%= campground.image %>">
+				<div class="card-body p-2 camp-body-small">
 					<h5 class="card-title"><%= campground.name %></h5>
 				</div>
 				<p>

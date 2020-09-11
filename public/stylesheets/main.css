@@ -1,3 +1,7 @@
+em {
+	line-height: 1.2;	
+}
+
 .delete-form {
 	display: inline;
 }
@@ -8,27 +12,51 @@
     width: 100%;
 }
 
-.row.display-flex {
- 	display: flex;
- 	flex-wrap: wrap;
-}
-
-.row.display-flex > [class*='col-'] {
-  	flex-grow: 1;
-}
-
-.logoCont {
-    position: absolute;
-    top: 50%;
-    transform: translate(0%,-50%);
-    height: 50%;
-    width: 50%;
+.weather-card {
+	position: absolute;
+	right: 0px; top: 0px;
+	z-index: 1000;
+	opacity: 0.9;
 }
 
 .weathercondition {
-	max-width: 80px;
+	max-width: 50px;
 	max-height: auto;
 	filter: contrast(90%);
+	margin-top: -0.4rem;
+	margin-bottom: -0.4rem;
+}
+
+.weather-description {
+	font-size: 0.7rem;
+}
+
+.camp-deck {
+	display:flex;
+	flex-wrap: wrap;
+}
+
+.camp-card-small {
+	max-height: 20rem;
+}
+
+.camp-body-small {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.camp-photo {
+	position: relative
+}
+
+.camp-photo-small {
+	max-height: 10rem;
+}
+
+.camp-form {
+	width: 30%;
+	margin: 25px auto;
 }
 
 .purple {
