@@ -1,11 +1,11 @@
 <% include ../partials/header %>
 
 <header class="jumbotron">
-	<div class="container">
-		<h1>Welcome To YelpCamp!</h1>
-		<p>View our hand-picked campgrounds from all over the world</p>
+	<div class="container px-3">
+		<h1 class="display-4">Welcome To YelpCamp!</h1>
+		<p class="lead">View our hand-picked campgrounds from all over the world</p>
 		<p>
-			<a class="btn btn-primary btn-lg" href="/campgrounds/new">Add New Campground</a>
+			<a class="btn btn-primary btn-lg" href="/campgrounds/new" role="button">Add New Campground</a>
 		</p>
 	</div>
 </header>
@@ -13,10 +13,10 @@
 <div class="row text-center" style="display:flex; flex-wrap: wrap;">
 	<% campgrounds.forEach((campground) =>{ %>
 		<div class="col-md-3 col-sm-6">
-			<div class="thumbnail">
-				<img src="<%= campground.image %>">
-				<div class="caption">
-					<h4><%= campground.name %></h4>
+			<div class="card h-100" style="max-height: 20rem;">
+				<img src="<%= campground.image %>" style="max-height: 10rem;">
+				<div class="card-body p-2" style="display: flex; justify-content: center; align-items: center;">
+					<h5 class="card-title"><%= campground.name %></h5>
 				</div>
 				<p>
 					<a href="/campgrounds/<%=campground._id%>" class="btn btn-primary">More Info</a>

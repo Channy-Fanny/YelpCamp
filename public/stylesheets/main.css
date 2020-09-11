@@ -1,15 +1,3 @@
-.thumbnail img{
-	width: 100%;
-}
-
-.thumbnail {
-	padding: 0;
-}
-
-.thumbnail .caption-full {
-	padding: 9px;
-}
-
 .delete-form {
 	display: inline;
 }
@@ -38,23 +26,9 @@
 }
 
 .weathercondition {
-	max-width: 50px;
+	max-width: 80px;
 	max-height: auto;
 	filter: contrast(90%);
-}
-
-.temperature{
-	font-weight: 900;
-	font-size: 150%;
-	vertical-align: middle;
-}
-
-.description{
-	font: italic 90% serif;
-	font-weight: 600;
-	color: #aaaaaa;
-	margin-right: -2%;
-	vertical-align: middle;
 }
 
 .purple {
