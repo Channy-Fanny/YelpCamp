@@ -4,11 +4,13 @@ var Campground = require("../models/campground");
 var Comment = require("../models/comment");
 var middleware = require("../middleware");
 var NodeGeocoder = require('node-geocoder');
+var request = require("request");
  
 var options = {
   provider: 'google',
   httpAdapter: 'https',
   apiKey: process.env.GEOCODER_API_KEY,
+  weatherApiKey: process.env.OPENWEATHERMAP_API_KEY,
   formatter: null
 };
  
@@ -66,8 +68,16 @@ router.get("/:id", (req, res) => {
 			req.flash("error", "Campground not found");
 			res.redirect("back");
 	 	} else {
-			//console.log(foundCampground);
-			res.render("campgrounds/show", {campground: foundCampground});
+			coord_API_endpoint = "http://api.openweathermap.org/data/2.5/weather?";
+			lat_long = "lat=" + foundCampground.lat.toString() + "&lon=" + foundCampground.lng.toString();
+			join_key = "&appid=" + options.weatherApiKey;
+			current_coord_weather_url= coord_API_endpoint + lat_long + join_key;
+			request(current_coord_weather_url, (error, response, body) =>{
+				if (!error && response.statusCode == 200){
+					var data = JSON.parse(body);
+					res.render("campgrounds/show", {campground: foundCampground, data: data});
+				}
+			});	
 		}
 	});
 });

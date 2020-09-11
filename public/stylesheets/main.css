@@ -19,3 +19,72 @@
     height: 400px;
     width: 100%;
 }
+
+.row.display-flex {
+ 	display: flex;
+ 	flex-wrap: wrap;
+}
+
+.row.display-flex > [class*='col-'] {
+  	flex-grow: 1;
+}
+
+.logoCont {
+    position: absolute;
+    top: 50%;
+    transform: translate(0%,-50%);
+    height: 50%;
+    width: 50%;
+}
+
+.weathercondition {
+	max-width: 50px;
+	max-height: auto;
+	filter: contrast(90%);
+}
+
+.temperature{
+	font-weight: 900;
+	font-size: 150%;
+	vertical-align: middle;
+}
+
+.description{
+	font: italic 90% serif;
+	font-weight: 600;
+	color: #aaaaaa;
+	margin-right: -2%;
+	vertical-align: middle;
+}
+
+.purple {
+	color: #542788;
+}
+
+.darkblue {
+	color: #053061;
+}
+
+.blue {
+	color: #2166ac;
+}
+
+.lightblue {
+	color: #92c5de;
+}
+
+.green {
+	color: #7fbc41;
+}
+
+.yellow {
+	color: #dfc27d;
+}
+
+.orange {
+	color: #ff9a38;
+}
+
+.red {
+	color: #d73027;
+}

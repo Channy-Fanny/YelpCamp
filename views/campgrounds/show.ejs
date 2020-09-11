@@ -17,9 +17,63 @@
 				<h4 class="pull-right">$<%= campground.price %>/night</h4>
 				<h4><a><%= campground.name %></a></h4>
 				<p><%- campground.description %></p>
-				<p>
-					<em>Submitted by: <%= campground.author.username %>, <%= moment(campground.createdAt).fromNow() %></em>
-				</p>
+				<div class="row display-flex">
+					<div class="col-md-8 my-auto">
+						<div class="logoCont center-block">
+							<em>Submitted by: <%= campground.author.username %>, <%= moment(campground.createdAt).fromNow() %></em>
+						</div>
+					</div>
+					<div class="col-md-4 text-right">
+						<span class="description"><%= data.weather[0].description %></span>
+						<%
+							if (data.weather[0].id >= 200 && data.weather[0].id < 300) {
+								weathercondition = "http://openweathermap.org/img/wn/11d@2x.png";					
+							} else if (data.weather[0].id >= 300 && data.weather[0].id < 400) {
+								weathercondition = "http://openweathermap.org/img/wn/09d@2x.png";				
+							} else if (data.weather[0].id >= 500 && data.weather[0].id < 505) {
+								weathercondition = "http://openweathermap.org/img/wn/10d@2x.png";
+							} else if (data.weather[0].id == 511) {
+								weathercondition = "http://openweathermap.org/img/wn/13d@2x.png";
+							} else if (data.weather[0].id >= 520 && data.weather[0].id < 532) {
+								weathercondition = "http://openweathermap.org/img/wn/09d@2x.png";
+							} else if (data.weather[0].id >= 600 && data.weather[0].id < 700) {
+								weathercondition = "http://openweathermap.org/img/wn/13d@2x.png";
+							} else if (data.weather[0].id >= 700 && data.weather[0].id < 800) {
+								weathercondition = "http://openweathermap.org/img/wn/50d@2x.png";
+							} else if (data.weather[0].id == 800) {
+								weathercondition = "http://openweathermap.org/img/wn/01d@2x.png";
+							} else if (data.weather[0].id == 801) {
+								weathercondition = "http://openweathermap.org/img/wn/02d@2x.png";
+							} else if (data.weather[0].id == 802) {
+								weathercondition = "http://openweathermap.org/img/wn/03d@2x.png";
+							} else {
+								weathercondition = "http://openweathermap.org/img/wn/04d@2x.png";
+							}
+						%>
+						<img class="weathercondition" src="<%= weathercondition %>" alt="condition">
+
+						<%  
+							if ((data.main.temp - 273.15)<=-30) {
+								tempcolor = "purple";					
+							} else if ((data.main.temp - 273.15)<=-20 && (data.main.temp - 273.15)>-30) {
+								tempcolor = "darkblue";					
+							} else if ((data.main.temp - 273.15)<=-10 && (data.main.temp - 273.15)>-20) {
+								tempcolor = "blue";
+							} else if ((data.main.temp - 273.15)<=0 && (data.main.temp - 273.15)>-10) {
+								tempcolor = "lightblue";
+							} else if ((data.main.temp - 273.15)<=10 && (data.main.temp - 273.15)>0) {
+								tempcolor = "green";
+							} else if ((data.main.temp - 273.15)<=20 && (data.main.temp - 273.15)>10) {
+								tempcolor = "yellow";
+							} else if ((data.main.temp - 273.15)<=30 && (data.main.temp - 273.15)>20) {
+								tempcolor = "orange";
+							} else {
+								tempcolor = "red";
+							}
+						%>
+						<span class="temperature <%= tempcolor %>"><%= (data.main.temp - 273.15).toFixed(1) %>°C</span>
+					</div>
+				</div>
 				<% if(currentUser && campground.author.id.equals(currentUser._id)){ %>
 				<a class="btn btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
 				<form class="delete-form" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
@@ -53,7 +107,6 @@
 		</div>
 	</div>
 </div>
-
 <script>
   function initMap() {
     var lat = <%= campground.lat %>;
