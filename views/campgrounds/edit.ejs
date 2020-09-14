@@ -6,11 +6,11 @@
 		<form action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST">
 			<div class="form-group">
 				<label for="name">Name</label>
-				<input class="form-control" type="text" name="campground[name]" value="<%= campground.name %>">
+				<input class="form-control" type="text" name="campground[name]"  value="<%= campground.name %>">
 			</div>
 			<div class="form-group">
 				<label for="image">Image Url</label>
-				<input class="form-control" type="text" name="campground[image]" value="<%= campground.image %>"> 
+				<textarea class="form-control" name="campground[image]" rows="5"><%= campground.image.join(";\n") %></textarea>
 			</div>
 			<div class="form-group">
 				<label for="image">Price</label>
