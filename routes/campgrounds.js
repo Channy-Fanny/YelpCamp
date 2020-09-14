@@ -31,7 +31,7 @@ router.get("/", (req, res) => {
 router.post("/", middleware.isLoggedIn, (req, res) => {
 	var name = req.body.name;
 	var price = req.body.price;
-	var image = req.body.image;
+	var image = req.body.image.replace(/\s/g, "").split(",");
 	var desc = req.sanitize(req.body.description);
 	var author = {
 		id: req.user._id,
